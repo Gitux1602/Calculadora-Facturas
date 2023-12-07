@@ -1,0 +1,26 @@
+<div>
+    <label for="montoInicial">Ingrese el saldo inicial:</label>
+    <input type="number" [(ngModel)]="montoInicial" name="montoInicial">
+  
+    <br>
+  
+    <label for="saldosFacturas">Ingrese los montos de las facturas separados por comas:</label>
+    <input type="text" [(ngModel)]="saldosFacturasInput" name="saldosFacturas">
+  
+    <br>
+  
+    <button (click)="encontrarFacturasEnRango()">Encontrar Facturas</button>
+  
+    <br>
+  
+    <div *ngIf="facturasEncontradas">
+      <p>Facturas encontradas cuya suma es igual al saldo inicial:</p>
+      <ul>
+        <li *ngFor="let factura of facturasEncontradas">{{ factura }}</li>
+      </ul>
+    </div>
+  
+    <div *ngIf="!facturasEncontradas">
+      <p>No hay combinaciones de facturas cuya suma sea igual al saldo inicial.</p>
+    </div>
+  </div>
